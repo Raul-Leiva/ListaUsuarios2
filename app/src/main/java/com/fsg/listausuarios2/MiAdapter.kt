@@ -4,14 +4,17 @@ import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.EditText
+import android.widget.ListView
+import android.widget.TextView
+import androidx.core.view.get
 
 class MiAdapter (private val activity: Activity, private val listaUsuarios: ArrayList<DataItem>)
     : BaseAdapter(){
         class ViewHolder {
-            lateinit var editTextNombre: EditText
-            lateinit var editTextApellido: EditText
-            lateinit var editTextProfesion: EditText
+            lateinit var textViewNombre: TextView
+            lateinit var textViewApellido: TextView
+            lateinit var textViewProfesion: TextView
+
         }
 
         override fun getCount(): Int {
@@ -30,12 +33,20 @@ class MiAdapter (private val activity: Activity, private val listaUsuarios: Arra
             var filaView = view
             var viewHolder = ViewHolder()
 
-                val inflater = activity.layoutInflater
-                filaView = inflater.inflate(R.layout.activity_lista_usuarios_registrados, null, true)
+            val inflater = activity.layoutInflater
+            filaView = inflater.inflate(R.layout.activity_lista_usuarios_registrados, null, true)
 
+             viewHolder.textViewNombre = filaView.findViewById<TextView>(R.id.editTextNombre)
+             viewHolder.textViewApellido = filaView.findViewById<TextView>(R.id.editTextApellido)
+             viewHolder.textViewProfesion= filaView.findViewById<TextView>(R.id.editTextProfesion)
 
+            viewHolder.textViewNombre.text = listaUsuarios[indice].nombre
+            viewHolder.textViewApellido.text = listaUsuarios[indice].apellido
+            viewHolder.textViewProfesion.text = listaUsuarios[indice].profesion
 
-            return filaView!!
+            filaView.tag = viewHolder
+
+            return filaView
         }
 
     }

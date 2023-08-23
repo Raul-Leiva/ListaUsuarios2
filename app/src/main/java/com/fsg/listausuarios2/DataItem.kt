@@ -1,16 +1,20 @@
 package com.fsg.listausuarios2
 
+import android.text.Editable
 import android.widget.EditText
 
-class DataItem {
-    var nombreUsuario: String
-    var apellidoUsuario: String
-    var profesionUsuario: String
+data class DataItem(val nombre: String, val apellido: String, val profesion: String) {
 
-    constructor(nombreUsuario: String, apellidoUsuario: String, profesionUsuario: String) {
+    var nombreUsuario= nombre
+    var apellidoUsuario= apellido
+    var profesionUsuario= profesion
 
-        this.nombreUsuario = nombreUsuario
-        this.apellidoUsuario = apellidoUsuario
-        this.profesionUsuario = profesionUsuario
+    fun pasarString():String{
+       return nombre + "#" + apellido + "#" + profesion
+    }
+    fun pasarData(valor:String):DataItem{
+        var atributos = valor.split("#")
+        return  DataItem(atributos[0], atributos[1], atributos[2])
     }
 }
+
