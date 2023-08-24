@@ -3,7 +3,7 @@ package com.fsg.listausuarios2
 import android.text.Editable
 import android.widget.EditText
 
-data class DataItem(val nombre: String, val apellido: String, val profesion: String) {
+data class DataItem(var nombre: String, var apellido: String, var profesion: String) {
 
     var nombreUsuario= nombre
     var apellidoUsuario= apellido

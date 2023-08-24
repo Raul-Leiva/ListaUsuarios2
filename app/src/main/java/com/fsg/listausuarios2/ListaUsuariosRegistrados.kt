@@ -10,32 +10,20 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class ListaUsuariosRegistrados : AppCompatActivity() {
-
-    var listaUsuarios: ArrayList<DataItem> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_usuarios_registrados)
 
-        val listViewUsuarios: ListView = findViewById(R.id.listViewUsuarios)
-        val miAdaptador = MiAdapter(this, listaUsuarios)
+        var listViewUsuarios: ListView = findViewById(R.id.listViewUsuarios)
 
         var gson = Gson()
-
         val itemType = object : TypeToken<ArrayList<DataItem>>() {}.type
-        var data = intent.getStringExtra("Datos")
-        var lista2:ArrayList<DataItem> = gson.fromJson(data, itemType)
+        var data = intent.getStringExtra("Data")
+        var lista2: ArrayList<DataItem> = gson.fromJson(data, itemType)
 
-        listViewUsuarios
-        //elementos()
+        val miAdaptador = MiAdapter(this, lista2)
+
+        listViewUsuarios.adapter = miAdaptador
 
     }
-   /* fun elementos(){
-        var listViewUsuarios = findViewById<ListView>(R.id.listViewUsuarios)
-
-        var data = intent.getStringArrayListExtra("Datos")
-
-
-
-
-    }*/
     }

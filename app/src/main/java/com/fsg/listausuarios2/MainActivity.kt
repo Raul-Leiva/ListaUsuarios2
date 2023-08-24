@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -22,6 +23,7 @@ import com.google.gson.Gson
 class MainActivity : AppCompatActivity() {
 
     val listaUsuarios = ArrayList<DataItem>()
+
     private val REQUEST_IMAGE_CAPTURE = 1
     private val PERMISSION_REQUEST_CODE = 101
     private var bitmapPhoto : Bitmap? = null
@@ -31,19 +33,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        imageViewPhoto = findViewById(R.id.imageViewFoto);
     }
 
-    fun aniadirUsuarioLista(): ArrayList<DataItem>{
-
-        var editTextNombre = findViewById<TextView>(R.id.editTextNombre)
-        var editTextApellido = findViewById<TextView>(R.id.editTextApellido)
-        var editTextProfesion = findViewById<TextView>(R.id.editTextProfesion)
-
-        listaUsuarios.add(DataItem(editTextNombre.text.toString(), editTextApellido.text.toString(), editTextProfesion.text.toString()))
-
-        return listaUsuarios
-    }
     fun aniadirUsuario(view: View) {
 
         var builder: AlertDialog.Builder = AlertDialog.Builder(this)
@@ -52,7 +44,11 @@ class MainActivity : AppCompatActivity() {
 
         var positivoListener = object: DialogInterface.OnClickListener{
             override fun onClick(view: DialogInterface?, p1: Int){
-                aniadirUsuarioLista()
+                var editTextNombre = findViewById<EditText>(R.id.editTextNombre)
+                var editTextApellido = findViewById<EditText>(R.id.editTextApellido)
+                var editTextProfesion = findViewById<EditText>(R.id.editTextProfesion)
+
+                listaUsuarios.add(DataItem("${editTextNombre.text}", "${editTextApellido.text}", "${editTextProfesion.text}"))
             }
         }
 
