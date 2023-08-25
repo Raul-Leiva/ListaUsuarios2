@@ -15,7 +15,6 @@ class MiAdapter (private val activity: Activity, private val listaUsuarios: Arra
             lateinit var textViewNombre: TextView
             lateinit var textViewApellido: TextView
             lateinit var textViewProfesion: TextView
-            lateinit var imageViewFoto: ImageView
 
         }
 
@@ -41,11 +40,12 @@ class MiAdapter (private val activity: Activity, private val listaUsuarios: Arra
              viewHolder.textViewNombre = filaView.findViewById<TextView>(R.id.textViewNombre)
              viewHolder.textViewApellido = filaView.findViewById<TextView>(R.id.textViewApellido)
              viewHolder.textViewProfesion= filaView.findViewById<TextView>(R.id.textViewProfesion)
-            viewHolder.imageViewFoto = filaView.findViewById<ImageView>(R.id.imageViewFotoLayout)
+
 
             viewHolder.textViewNombre.text = listaUsuarios[indice].nombre
             viewHolder.textViewApellido.text = listaUsuarios[indice].apellido
             viewHolder.textViewProfesion.text = listaUsuarios[indice].profesion
+
 
 
             filaView.tag = viewHolder

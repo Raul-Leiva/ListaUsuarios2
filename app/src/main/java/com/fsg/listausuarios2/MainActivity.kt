@@ -29,11 +29,11 @@ class MainActivity : AppCompatActivity() {
     private var bitmapPhoto : Bitmap? = null
     lateinit var imageViewPhoto : ImageView;
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        imageViewPhoto = findViewById(R.id.imageViewFoto);
+
+        imageViewPhoto = findViewById(R.id.imageViewFoto)
     }
 
     fun aniadirUsuario(view: View) {
